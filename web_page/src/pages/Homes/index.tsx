@@ -8,6 +8,7 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // pluginは、あとから
 // import { Event, eventsPostAPI } from 'api/events';
 import PostButton from '../../components/molecules/PostButton';
 import DialogComponent from 'components/organisms/DialogComponents';
+import { NavLink } from 'react-router-dom';
 
 // -- external datas --
 // import SampleMovie from 'assets/sample-movie.mp4'
@@ -55,6 +56,7 @@ const Homes: React.FC = () => {
   // -- render part --
   return (
     <Wrap>
+      <NavLink to="/tests">Tests</NavLink>
         {/* <RoundedButton text="sample" onClick={getDataFromApi}/> */}
         <div>
           {isDialogOpen}
