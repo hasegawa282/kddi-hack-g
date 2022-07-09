@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
 import styled from 'styled-components';
 
 //MUI
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
@@ -61,11 +57,6 @@ const DialogComponent = (props: DialogProps) => {
 export default DialogComponent
 
 // -- styled components --
-const Wrap = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`
 
 const TextWrap = styled.div`
     display: flex;
