@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "2022-summer-g-team",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "start-api": "cd api && npm start",
     "start-app": "cd app && npm start",
