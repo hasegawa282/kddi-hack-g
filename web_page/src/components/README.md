@@ -1,0 +1,10 @@
+# コンポーネントの説明
+- atoms
+    - EventInput.tsx(イベントを入力するフォーム)
+    - FriendInput.tsx(友達を入力するフォーム)
+    - PeriodInput.tsx(夏休みの期間を入力するフォーム)
+- molecules
+    - PostButton.tsx(atomsの入力フォームをまとめて送信するボタン)
+    - json{event:["プール","花火"],friend:["hase","zaima"],start_period:2022:08:01,end_period:2022:08:31}
+- organisms
+    - DialogComponent.tsx(ダイアログで提示するコンポーネント)
