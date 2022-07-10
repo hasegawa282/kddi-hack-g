@@ -66,7 +66,7 @@ export const getCalenderEvents = (params: {
             resu = {
                 ...resu,
                 url: sea.url,
-                place: sea.place
+                description: sea.place
             }
         }
         result.push(resu)

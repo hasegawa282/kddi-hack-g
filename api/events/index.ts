@@ -5,7 +5,7 @@ export interface CalenderEvent {
     id?: string;
     title: string;
     url?: string;
-    place?: string;
+    description?: string;
     start: string; // yyyy-mm-dd
     end?: string; // yyyy-mm-dd
     color?: string;

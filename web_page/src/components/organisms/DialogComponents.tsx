@@ -17,15 +17,15 @@ import PresetButton from 'components/atoms/PresetButton';
 
 export interface DialogProps {
     isOpen: boolean;
-    onClose: (items?: Event[]) => void;
+    onClose: (items?: Event[], homeworks?: number) => void;
 }
 
 const DialogComponent = (props: DialogProps) => {
 
     const [friends, setFriends] = React.useState<string[]>([]);
     const [events, setEvents] = React.useState<string[]>([]);
-    const [vacation_start, setVacationStart] = React.useState<string>('2022-08-01')
-    const [vacation_end, setVacationEnd] = React.useState<string>('2022-08-30')
+    const [vacation_start, setVacationStart] = React.useState<string>('2022-07-10')
+    const [vacation_end, setVacationEnd] = React.useState<string>('2022-07-30')
     
 
     const onClose = () => {
@@ -47,17 +47,17 @@ const DialogComponent = (props: DialogProps) => {
             vacation_start: vacation_start,
             vacation_end: vacation_end
         }
-        if(events){
+        if(events.length > 0){
             request_params.events = events
         }
-        if(friends){
+        if(friends.length > 0){
             request_params.friends = friends
         }
         console.log(request_params)
         const res = await eventsPostAPI(request_params)
         console.log(res)
         if(res){
-            props.onClose(res.items)
+            props.onClose(res.items, res.homeworks)
         }
     }
 
