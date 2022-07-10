@@ -5,8 +5,10 @@ export interface CalenderEvent {
     id?: string;
     title: string;
     url?: string;
+    place?: string;
     start: string; // yyyy-mm-dd
     end?: string; // yyyy-mm-dd
+    color?: string;
 }
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
@@ -27,7 +29,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         const vacation_start = getVacationStart(request_body?.vacation_start)
         // 終了期間(デフォルト2022/9/30)
         const vacation_end = getVacationEnd(request_body?.vacation_end)
-
         context.log(events)
         context.log(friends)
         context.log(vacation_start)

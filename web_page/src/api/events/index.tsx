@@ -6,18 +6,22 @@ export interface Event {
     start: string; // yyyy-mm-dd
     end?: string; // yyyy-mm-dd
     url?: string;
+    place?: string;
+    color?: string;
 }
 
 const sample_event1: Event = {
     id: "1",
     title: "はせとBBQ",
     start: "2022-08-01",
+    color: "blue"
 }
 
 const sample_event2: Event = {
     id: "2",
     title: "はせと水族館",
     start: "2022-08-08",
+    color: "red"
 }
 
 
@@ -42,9 +46,7 @@ export const eventsPostAPI = async(params: RequestEventsGetProps): Promise<Event
         },
         body: JSON.stringify(params)
     });
-    console.log(data)
     const json = await data.json()
-    console.log(json)
     return json.items
     
 }

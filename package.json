@@ -15,15 +15,15 @@
   }, 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kdg-hacks/2022-summer-g-team.git"
+    "url": "git+https://github.com/hasegawa282/kddi-hack-g.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kdg-hacks/2022-summer-g-team/issues"
+    "url": "https://github.com/hasegawa282/kddi-hack-g/issues"
   },
-  "homepage": "https://github.com/kdg-hacks/2022-summer-g-team#readme",
+  "homepage": "https://github.com/hasegawa282/kddi-hack-g#readme",
   "devDependencies": {
     "@azure/static-web-apps-cli": "^1.0.2",
     "azure-functions-core-tools": "^4.0.4629",

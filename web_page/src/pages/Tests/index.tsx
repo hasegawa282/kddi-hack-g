@@ -14,7 +14,9 @@ import {  eventsPostAPI } from 'api/events';
 const Tests: React.FC = () => {
 
     const postAPI = async() => {
-        const res = await eventsPostAPI({})
+        const res = await eventsPostAPI({
+          events: ["海", "旅行", '宿題']
+        })
         console.log(res)
     }
 
