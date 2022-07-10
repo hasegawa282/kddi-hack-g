@@ -47,7 +47,7 @@ const FriendInput = (props: Props) => {
             <form onSubmit={() => { }}>
               {props.friends.map((friend, index) => {
                 return (
-                  <div key={index}>
+                  <div style={{ margin: '0 0 10px' }}key={index}>
                     <TextField id="outlined-basic" label="友達の名前を入力" variant="outlined" value={friend} onChange={(e) => onChange(e, index)} />
                     <Button startIcon={<DeleteIcon />} onClick={() => removeFriends(index)}>削除</Button>
                   </div>

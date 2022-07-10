@@ -47,7 +47,7 @@ const EventsInput = (props: Props) => {
             <form onSubmit={() => { }}>
               {props.events.map((friend, index) => {
                 return (
-                  <div key={index}>
+                  <div style={{ margin: '0 0 10px' }}key={index}>
                     <TextField id="outlined-basic" label="イベント名を入力" variant="outlined" value={friend} onChange={(e) => onChange(e, index)} />
                     <Button startIcon={<DeleteIcon />} onClick={() => removeFriends(index)}>削除</Button>
                   </div>
