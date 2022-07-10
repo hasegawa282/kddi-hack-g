@@ -6,13 +6,13 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export interface Props {
+interface Props {
   friends: string[];
   setFriends: (friends: string[]) => void;
 }
 
 const FriendInput = (props: Props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const addFriends = () => {
     let new_friends = [...props.friends, '']
@@ -30,6 +30,10 @@ const FriendInput = (props: Props) => {
     new_friends[index] = e.currentTarget.value
     props.setFriends(new_friends)
   }
+
+  React.useEffect(() => {
+    setOpen(props.friends.length > 0)
+  }, [props.friends])/* eslint-disable-line */
 
   return (
     <>

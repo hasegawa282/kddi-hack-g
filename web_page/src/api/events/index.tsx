@@ -33,11 +33,19 @@ export interface RequestEventsGetProps {
     vacation_end?: DateInput;
 }
 
+export interface ResponseEventsGetProps {
+    items: Event[];
+    homeworks: number;
+}
+
 /** イベントを作成して取得するAPI**/
-export const eventsPostAPI = async(params: RequestEventsGetProps): Promise<Event[]> => {
+export const eventsPostAPI = async(params: RequestEventsGetProps): Promise<ResponseEventsGetProps> => {
     // 本番以外はサンプルデータ返却
     if (process.env.NODE_ENV !== 'production') {
-        return [sample_event1, sample_event2]
+        return {
+            items: [sample_event1, sample_event2],
+            homeworks: 3,
+        }
     }
     const data = await fetch(`/api/events`, {
         method: 'POST',
@@ -47,6 +55,9 @@ export const eventsPostAPI = async(params: RequestEventsGetProps): Promise<Event
         body: JSON.stringify(params)
     });
     const json = await data.json()
-    return json.items
+    return {
+        items: json.items,
+        homeworks: json.homeworks
+    }
     
 }

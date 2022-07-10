@@ -38,8 +38,7 @@ const Homes: React.FC = () => {
   return (
       <Wrap>
           <PostButton style={{marginBottom: '5px', marginTop: '15px'}} onClick={handleClickOpen}/>
-          {/* <PostButton  onClick={loadEvents}/> */}
-          <DialogComponent onClose={handleClose} isOpen={isDialogOpen}/>
+          {isDialogOpen && <DialogComponent onClose={handleClose} isOpen={isDialogOpen}/>}
           {events !== undefined && <CalendarWrap>
             <Paper style={{padding: '15px'}} elevation={5}>
               <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" locale="ja" events={events}/>

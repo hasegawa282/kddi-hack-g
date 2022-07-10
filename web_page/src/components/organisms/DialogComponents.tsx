@@ -9,9 +9,10 @@ import ListItem from '@mui/material/ListItem';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import FriendInput from 'components/atoms/FriendsInput';
-import EventInput from 'components/atoms/EventsInput';
+import FriendsInput from 'components/atoms/FriendsInput';
+import EventsInput from 'components/atoms/EventsInput';
 import { Event, eventsPostAPI, RequestEventsGetProps } from 'api/events';
+import PresetButton from 'components/atoms/PresetButton';
 
 
 export interface DialogProps {
@@ -31,6 +32,16 @@ const DialogComponent = (props: DialogProps) => {
         props.onClose();
     }
 
+    const onPlanClick = (detail: RequestEventsGetProps) => {
+        console.log(detail)
+        if(detail.events){
+            setEvents(detail.events)
+        }
+        if(detail.friends){
+            setFriends(detail.friends)
+        }
+    }
+
     const onFinish = async() => {
         let request_params: RequestEventsGetProps = {
             vacation_start: vacation_start,
@@ -46,10 +57,9 @@ const DialogComponent = (props: DialogProps) => {
         const res = await eventsPostAPI(request_params)
         console.log(res)
         if(res){
-            props.onClose(res)
+            props.onClose(res.items)
         }
     }
-
 
 
     return (
@@ -58,6 +68,9 @@ const DialogComponent = (props: DialogProps) => {
             <Dialog onClose={onClose} open={props.isOpen}>
             <DialogTitle>詳細設定</DialogTitle>
             <List sx={{ pt: 0 }}>
+                <ListItem style={{justifyContent: 'center'}}>
+                    <PresetButton onPlanClick={onPlanClick}/>
+                </ListItem>
                 <ListItem>
                     <Stack>
                         <TextWrap>
@@ -87,8 +100,8 @@ const DialogComponent = (props: DialogProps) => {
                         </TextWrap>
                     </Stack>
                 </ListItem>
-                <FriendInput friends={friends} setFriends={setFriends}/>
-                <EventInput events={events} setEvents={setEvents}/>
+                <FriendsInput friends={friends} setFriends={setFriends}/>
+                <EventsInput events={events} setEvents={setEvents}/>
                 <ListItem>
                 <div style={{ flexGrow: 1 }}></div>
                         <Button variant="outlined" onClick={onFinish}>決定</Button>

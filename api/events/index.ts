@@ -29,23 +29,26 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         const vacation_start = getVacationStart(request_body?.vacation_start)
         // 終了期間(デフォルト2022/9/30)
         const vacation_end = getVacationEnd(request_body?.vacation_end)
-        context.log(events)
-        context.log(friends)
-        context.log(vacation_start)
-        context.log(vacation_end)
+        // context.log(events)
+        // context.log(friends)
+        // context.log(vacation_start)
+        // context.log(vacation_end)
 
         // 返却するイベント一覧
-        let calender_events: CalenderEvent[] = getCalenderEvents({
+        const calender_events: CalenderEvent[] = getCalenderEvents({
             events: events,
             friends: friends,
             vacation_start: vacation_start,
             vacation_end: vacation_end,
         })
+        // 宿題の数
+        const homeworks: number = calender_events.filter((ce) => ce.title.indexOf('宿題') > -1).length
         context.log(calender_events)
         context.res = {
             // status: 200, /* Defaults to 200 */
             status: 200,
             body: {
+                homeworks: homeworks,
                 items: calender_events,
             }
         };

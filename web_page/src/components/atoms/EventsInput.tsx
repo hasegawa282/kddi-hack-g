@@ -6,20 +6,20 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export interface Props {
+interface Props {
   events: string[];
   setEvents: (friends: string[]) => void;
 }
 
 const EventsInput = (props: Props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
-  const addFriends = () => {
+  const addEvents = () => {
     let new_friends = [...props.events, '']
     props.setEvents(new_friends)
   }
 
-  const removeFriends = (index: number) => {
+  const removeEvents = (index: number) => {
     let new_friends = [...props.events.slice(0, index), ...props.events.slice(index + 1)]
     props.setEvents(new_friends)
   }
@@ -30,6 +30,10 @@ const EventsInput = (props: Props) => {
     new_friends[index] = e.currentTarget.value
     props.setEvents(new_friends)
   }
+
+  React.useEffect(() => {
+    setOpen(props.events.length > 0)
+  }, [props.events])/* eslint-disable-line */
 
   return (
     <>
@@ -43,13 +47,13 @@ const EventsInput = (props: Props) => {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <div style={{ padding: '10px' }}>
-            <Button startIcon={<AddIcon />} onClick={addFriends}>追加</Button>
+            <Button startIcon={<AddIcon />} onClick={addEvents}>追加</Button>
             <form onSubmit={() => { }}>
               {props.events.map((friend, index) => {
                 return (
                   <div style={{ margin: '0 0 10px' }}key={index}>
                     <TextField id="outlined-basic" label="イベント名を入力" variant="outlined" value={friend} onChange={(e) => onChange(e, index)} />
-                    <Button startIcon={<DeleteIcon />} onClick={() => removeFriends(index)}>削除</Button>
+                    <Button startIcon={<DeleteIcon />} onClick={() => removeEvents(index)}>削除</Button>
                   </div>
                 )
               })}
