@@ -7,4 +7,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "timeUnit": 15,
   "startTime": "202207060900",
   "endTime": "202207060915"
-}' https://l955buebw3.execute-api.ap-northeast-1.amazonaws.com/vital-statistics/latlng -H 'x-api-key: ********' | jq
+}' ***** -H 'x-api-key: ********' | jq
